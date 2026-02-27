@@ -44,3 +44,35 @@ function playAudio(audioId, clickedButton) {
         // clickedButton.classList.remove('playing');
     }
 }
+
+function downloadAudio(id) {
+    const audio = document.getElementById(id);
+    
+    if (!audio) {
+        alert("Áudio não encontrado!");
+        return;
+    }
+
+    const link = document.createElement('a');
+    link.href = audio.src;
+    link.download = audio.src.split('/').pop(); 
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+    const controls = document.querySelectorAll(".audio-controls");
+
+    controls.forEach(control => {
+        const baseId = control.dataset.audio;
+
+        control.innerHTML = `
+            <button onclick="playAudio('${baseId}-e', this)">ENG</button>
+            <button onclick="downloadAudio('${baseId}-e')">⬇</button>
+
+            <button onclick="playAudio('${baseId}-j', this)">JP</button>
+            <button onclick="downloadAudio('${baseId}-j')">⬇</button>
+        `;
+    });
+});
