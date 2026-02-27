@@ -1,3 +1,18 @@
+.audio-controls {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+}
+
+.audio-controls button {
+    cursor: pointer;
+    padding: 4px 8px;
+}
+
+.audio-controls button:hover {
+    opacity: 0.8;
+}
+
 .center {
   display: block;
   margin-left: auto;
